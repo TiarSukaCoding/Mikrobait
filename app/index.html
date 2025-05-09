@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mikrobait | Free Contemporary Art Exhibition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#234e40',
+                        primaryLight: '#88d498',
+                        primaryDark: '#114b5f',
+                        accent: '#f3e9d2',
+                        dark: '#1a1a1a'
+                    },
+                    fontFamily: {
+                        sans: ['"Space Grotesk"', 'sans-serif'],
+                        display: ['"Bespoke Serif"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bespoke+Serif:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #1a1a1a;
+        }
+        
+        .heading-font {
+            font-family: 'Bespoke Serif', serif;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 90vh;
+        }
+        
+        .artwork-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .artwork-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .news-card {
+            transition: all 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mobile-menu {
+            transition: all 0.3s ease;
+        }
+        
+        .artist-image {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .artist-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .section-divider {
+            height: 80px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 20, 40 0, 60 10 C 80 20, 100 0, 100 10 L100 0 L0 0 Z' fill='%23234e40'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+        }
+        
+        .btn-primary {
+            background-color: #234e40;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #114b5f;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            border: 2px solid #234e40;
+            color: #234e40;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background-color: #234e40;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .floating-label {
+            transition: all 0.2s ease;
+            transform-origin: left center;
+        }
+        
+        .form-input:focus + .floating-label,
+        .form-input:not(:placeholder-shown) + .floating-label {
+            transform: translateY(-24px) scale(0.85);
+            color: #234e40;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white text-dark shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-palette text-2xl text-primary"></i>
+                    <a href="#" class="heading-font text-2xl font-bold">Mikrobait</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="hover:text-primary transition font-medium">About</a>
+                    <a href="#artists" class="hover:text-primary transition font-medium">Artists</a>
+                    <a href="#exhibits" class="hover:text-primary transition font-medium">Exhibits</a>
+                    <a href="#events" class="hover:text-primary transition font-medium">Events</a>
+                    <a href="#contact" class="hover:text-primary transition font-medium">Contact</a>
+                    <a href="#visit" class="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primaryDark transition btn-primary">Plan Visit</a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-dark focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="mobile-menu hidden md:hidden bg-white mt-2 py-2 px-4 rounded-lg shadow-lg">
+                <div class="flex flex-col space-y-3">
+                    <a href="#about" class="block py-2 hover:text-primary transition font-medium">About</a>
+                    <a href="#artists" class="block py-2 hover:text-primary transition font-medium">Artists</a>
+                    <a href="#exhibits" class="block py-2 hover:text-primary transition font-medium">Exhibits</a>
+                    <a href="#events" class="block py-2 hover:text-primary transition font-medium">Events</a>
+                    <a href="#contact" class="block py-2 hover:text-primary transition font-medium">Contact</a>
+                    <a href="#visit" class="block py-2 text-center bg-primary text-white rounded-full font-medium hover:bg-primaryDark transition btn-primary">Plan Visit</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="inline-block bg-primary/90 backdrop-blur-sm px-6 py-2 rounded-full mb-6">
+                <span class="font-medium">Free Admission • June 15 - Sept 30</span>
+            </div>
+            <h1 class="heading-font text-5xl md:text-7xl font-bold mb-6 leading-tight">Mikrobait</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">A free contemporary art exhibition celebrating innovative artistic perspectives</p>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <a href="#visit" class="px-8 py-3 rounded-full font-medium btn-primary">Plan Your Visit</a>
+                <a href="#about" class="px-8 py-3 rounded-full font-medium btn-outline">Explore Exhibition</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-dark mb-4">About the Exhibition</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Mikrobait brings together 25 contemporary artists exploring innovative artistic expressions through diverse mediums. Thanks to our generous sponsors, admission is completely free for all visitors.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1466&q=80" alt="Art exhibition space" class="rounded-xl shadow-lg w-full transform transition duration-500 group-hover:scale-102">
+                        <div class="absolute inset-0 bg-primary/10 rounded-xl pointer-events-none"></div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="heading-font text-2xl font-bold text-dark mb-4">Exploring Contemporary Art</h3>
+                    <p class="text-gray-600 mb-4">Mikrobait challenges traditional artistic representations by presenting innovative works that range from immersive installations to digital media and traditional techniques. Our free admission policy ensures everyone can experience these thought-provoking works.</p>
+                    <p class="text-gray-600 mb-6">The exhibition runs from June 15 to September 30 at the Modern Art Gallery in downtown. We're open Tuesday through Sunday from 10am to 6pm, with extended hours until 9pm on Fridays for special programming.</p>
+                    
+                    <div class="mb-8">
+                        <h4 class="heading-font text-xl font-bold text-dark mb-4">Organized By</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex items-center bg-accent/50 px-4 py-3 rounded-lg">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c6b4e56b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Curator" class="w-12 h-12 rounded-full object-cover mr-3">
+                                <div>
+                                    <p class="font-medium">Sarah Johnson</p>
+                                    <p class="text-sm text-gray-500">Chief Curator</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center bg-accent/50 px-4 py-3 rounded-lg">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Director" class="w-12 h-12 rounded-full object-cover mr-3">
+                                <div>
+                                    <p class="font-medium">Michael Chen</p>
+                                    <p class="text-sm text-gray-500">Art Director</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-6">
+                        <div class="flex items-center bg-accent/50 px-4 py-2 rounded-lg">
+                            <i class="fas fa-calendar-alt text-primary mr-3 text-lg"></i>
+                            <div>
+                                <p class="font-medium">June 15 - Sept 30</p>
+                                <p class="text-sm text-gray-500">2023 Exhibition</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-accent/50 px-4 py-2 rounded-lg">
+                            <i class="fas fa-clock text-primary mr-3 text-lg"></i>
+                            <div>
+                                <p class="font-medium">10AM - 6PM</p>
+                                <p class="text-sm text-gray-500">(9PM Fridays)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Artists Section -->
+    <section id="artists" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-dark mb-4">Featured Artists</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Discover the visionary artists whose works challenge perceptions and inspire new ways of seeing contemporary art.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Artist 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden artwork-card">
+                    <div class="artist-image overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Artist Elena Rodriguez" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold text-dark mb-2">Elena Rodriguez</h3>
+                        <p class="text-gray-500 text-sm mb-4">Mixed Media | New York, USA</p>
+                        <p class="text-gray-600 mb-4">Known for her large-scale installations incorporating unconventional materials and digital projections that respond to visitor movement.</p>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            View Works
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Artist 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden artwork-card">
+                    <div class="artist-image overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Artist Jamal Carter" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold text-dark mb-2">Jamal Carter</h3>
+                        <p class="text-gray-500 text-sm mb-4">Photography | London, UK</p>
+                        <p class="text-gray-600 mb-4">His photographic series documents urban landscapes using innovative time-lapse and light painting techniques.</p>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            View Works
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Artist 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden artwork-card">
+                    <div class="artist-image overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Artist Mei Lin" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold text-dark mb-2">Mei Lin</h3>
+                        <p class="text-gray-500 text-sm mb-4">Ceramics | Beijing, China</p>
+                        <p class="text-gray-600 mb-4">Creates intricate porcelain sculptures inspired by microscopic forms, magnified to human scale.</p>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            View Works
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block px-8 py-3 rounded-full font-medium btn-outline">View All 25 Artists</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exhibition Highlights -->
+    <section id="exhibits" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-dark mb-4">Exhibition Highlights</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Explore some of the most talked-about pieces in this year's exhibition, all available to experience for free.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Featured Artwork 1 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg flex flex-col md:flex-row artwork-card">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80" alt="Featured artwork" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="heading-font text-xl font-bold text-dark">"Ephemeral Structures"</h3>
+                            <span class="bg-primary text-white text-xs px-2 py-1 rounded-full">Interactive</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4">Elena Rodriguez | Installation</p>
+                        <p class="text-gray-600 mb-4">An immersive experience using projected light and unconventional materials that change throughout the day in response to environmental data.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                            <span>Gallery 3, East Wing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured Artwork 2 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg flex flex-col md:flex-row artwork-card">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb39268b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=745&q=80" alt="Featured artwork" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="heading-font text-xl font-bold text-dark">"Urban Perspectives"</h3>
+                            <span class="bg-primary text-white text-xs px-2 py-1 rounded-full">Photography</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4">Jamal Carter | Photography Series</p>
+                        <p class="text-gray-600 mb-4">Documenting 12 urban locations over 10 years to show the dramatic effects of urban change, with augmented reality elements.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                            <span>Gallery 1, Main Hall</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured Artwork 3 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg flex flex-col md:flex-row artwork-card">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1578307987925-bbaf239df822?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Featured artwork" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="heading-font text-xl font-bold text-dark">"Microcosms"</h3>
+                            <span class="bg-primary text-white text-xs px-2 py-1 rounded-full">Sculpture</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4">Mei Lin | Porcelain Sculptures</p>
+                        <p class="text-gray-600 mb-4">Delicate porcelain forms magnified to human scale, revealing hidden architectures with interactive lighting.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                            <span>Gallery 2, North Wing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured Artwork 4 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg flex flex-col md:flex-row artwork-card">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" alt="Featured artwork" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="heading-font text-xl font-bold text-dark">"Digital Symbiosis"</h3>
+                            <span class="bg-primary text-white text-xs px-2 py-1 rounded-full">Digital</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4">Carlos Mendez | Interactive Digital</p>
+                        <p class="text-gray-600 mb-4">Visitors' movements trigger digital ecosystems that evolve in real-time on massive LED walls, creating unique collaborative art.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                            <span>Gallery 4, Digital Space</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-20 bg-primary text-white parallax" style="background-image: linear-gradient(rgba(35, 78, 64, 0.9), rgba(35, 78, 64, 0.9)), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">Special Events</h2>
+                <div class="w-24 h-1 bg-white mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto opacity-90">Enhance your free visit with our program of special events, talks, and workshops.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event 1 -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg news-card border border-white/10">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="bg-white text-primary px-3 py-1 rounded-full text-xs font-medium">Artist Talk</span>
+                            </div>
+                            <span class="opacity-80 text-sm">June 22, 2023</span>
+                        </div>
+                        <h3 class="heading-font text-xl font-bold mb-3">In Conversation: Elena Rodriguez</h3>
+                        <p class="opacity-90 mb-4">The artist discusses her creative process and the inspiration behind her large-scale installations in this intimate evening talk.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-clock mr-2 opacity-80"></i>
+                                <span>7:00 PM - 8:30 PM</span>
+                            </div>
+                            <a href="#" class="text-white font-medium hover:underline">Details →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg news-card border border-white/10">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="bg-white text-primary px-3 py-1 rounded-full text-xs font-medium">Workshop</span>
+                            </div>
+                            <span class="opacity-80 text-sm">July 8, 2023</span>
+                        </div>
+                        <h3 class="heading-font text-xl font-bold mb-3">Contemporary Art Workshop</h3>
+                        <p class="opacity-90 mb-4">Create your own artworks using unconventional materials, inspired by techniques from the exhibition.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-clock mr-2 opacity-80"></i>
+                                <span>2:00 PM - 4:00 PM</span>
+                            </div>
+                            <a href="#" class="text-white font-medium hover:underline">Details →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg news-card border border-white/10">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="bg-white text-primary px-3 py-1 rounded-full text-xs font-medium">Performance</span>
+                            </div>
+                            <span class="opacity-80 text-sm">August 12, 2023</span>
+                        </div>
+                        <h3 class="heading-font text-xl font-bold mb-3">"Structures" Dance Performance</h3>
+                        <p class="opacity-90 mb-4">Contemporary dance performance responding to the exhibition themes, created specifically for the gallery space.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-clock mr-2 opacity-80"></i>
+                                <span>6:30 PM - 8:00 PM</span>
+                            </div>
+                            <a href="#" class="text-white font-medium hover:underline">Details →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-primary transition">View All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Section -->
+    <section id="visit" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-dark mb-4">Plan Your Free Visit</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">While admission is free, we recommend planning ahead for the best experience.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-8 md:p-12">
+                        <h3 class="heading-font text-2xl font-bold text-dark mb-6">Visitor Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="pb-4 border-b border-gray-200">
+                                <h4 class="font-bold text-lg mb-1">Free Admission</h4>
+                                <p class="text-gray-600">Thanks to our generous sponsors, entry to Mikrobait is completely free for all visitors.</p>
+                            </div>
+                            
+                            <div class="pb-4 border-b border-gray-200">
+                                <h4 class="font-bold text-lg mb-1">Timed Entry</h4>
+                                <p class="text-gray-600">To ensure a comfortable experience, we recommend visiting during non-peak hours (weekday mornings).</p>
+                            </div>
+                            
+                            <div class="pb-4 border-b border-gray-200">
+                                <h4 class="font-bold text-lg mb-1">Group Visits</h4>
+                                <p class="text-gray-600">Groups of 10+ should contact us in advance to ensure gallery capacity isn't exceeded.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Accessibility</h4>
+                                <p class="text-gray-600">The gallery is fully wheelchair accessible with tactile guides and audio descriptions available.</p>
+                            </div>
+                            
+                            <div class="pt-6">
+                                <h4 class="font-bold text-lg mb-4">Gallery Location</h4>
+                                <div class="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg overflow-hidden">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256012703!2d-73.9878449245254!3d40.74844097138966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1687203843605!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-clock text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Hours</h4>
+                                <p class="text-sm text-gray-600">Tue-Thu: 10AM-6PM<br>Fri: 10AM-9PM<br>Sat-Sun: 10AM-6PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Location</h4>
+                                <p class="text-sm text-gray-600">Modern Art Gallery<br>123 Art Avenue<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-info-circle text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Visitor Info</h4>
+                                <p class="text-sm text-gray-600">Free admission<br>Wheelchair accessible<br>Free Wi-Fi available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-dark mb-4">Contact Us</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Have questions about the exhibition? Get in touch with our team.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-gray-50 rounded-xl shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 md:p-12">
+                        <h3 class="heading-font text-2xl font-bold text-dark mb-6">Send a Message</h3>
+                        
+                        <div class="mb-6">
+                            <p class="text-gray-600 mb-4">For immediate assistance, message us on WhatsApp:</p>
+                            <a href="https://wa.me/12125551234" class="whatsapp-btn px-6 py-3 rounded-full font-medium flex items-center justify-center">
+                                <i class="fab fa-whatsapp text-xl mr-2"></i> 
+                                Chat on WhatsApp
+                            </a>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold mb-2">Phone</h4>
+                                <p class="text-gray-600">(212) 555-1234</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold mb-2">Email</h4>
+                                <p class="text-gray-600">info@mikrobait.com</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold mb-2">Social Media</h4>
+                                <div class="flex space-x-4 mt-2">
+                                    <a href="#" class="text-primary hover:text-primaryDark transition"><i class="fab fa-instagram text-2xl"></i></a>
+                                    <a href="#" class="text-primary hover:text-primaryDark transition"><i class="fab fa-facebook text-2xl"></i></a>
+                                    <a href="#" class="text-primary hover:text-primaryDark transition"><i class="fab fa-twitter text-2xl"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 bg-primary text-white p-8 md:p-12">
+                        <h3 class="heading-font text-2xl font-bold mb-6">Our Team</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c6b4e56b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Curator" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <h4 class="font-bold">Sarah Johnson</h4>
+                                    <p class="opacity-90 mb-1">Chief Curator</p>
+                                    <p class="text-sm opacity-80">sarah@mikrobait.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Director" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <h4 class="font-bold">Michael Chen</h4>
+                                    <p class="opacity-90 mb-1">Art Director</p>
+                                    <p class="text-sm opacity-80">michael@mikrobait.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Coordinator" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <h4 class="font-bold">Emma Rodriguez</h4>
+                                    <p class="opacity-90 mb-1">Visitor Coordinator</p>
+                                    <p class="text-sm opacity-80">emma@mikrobait.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas fa-palette text-2xl text-primary"></i>
+                        <span class="heading-font text-xl font-bold">Mikrobait</span>
+                    </div>
+                    <p class="opacity-80 mb-4">Exploring contemporary art through innovative expressions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-primary transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-primary transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white hover:text-primary transition"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="heading-font text-lg font-bold mb-4">Exhibition</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="opacity-80 hover:opacity-100 hover:text-primary transition">About</a></li>
+                        <li><a href="#artists" class="opacity-80 hover:opacity-100 hover:text-primary transition">Artists</a></li>
+                        <li><a href="#exhibits" class="opacity-80 hover:opacity-100 hover:text-primary transition">Highlights</a></li>
+                        <li><a href="#events" class="opacity-80 hover:opacity-100 hover:text-primary transition">Events</a></li>
+                        <li><a href="#visit" class="opacity-80 hover:opacity-100 hover:text-primary transition">Plan Visit</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="heading-font text-lg font-bold mb-4">Visitor Info</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-primary transition">Hours</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-primary transition">Directions</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-primary transition">Accessibility</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-primary transition">Group Visits</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-primary transition">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="opacity-80 text-sm mb-4 md:mb-0">© 2023 Mikrobait. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="opacity-80 hover:opacity-100 hover:text-primary transition text-sm">Privacy Policy</a>
+                    <a href="#" class="opacity-80 hover:opacity-100 hover:text-primary transition text-sm">Terms of Use</a>
+                    <a href="#" class="opacity-80 hover:opacity-100 hover:text-primary transition text-sm">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const menu = document.getElementById('mobile-menu');
+                    menu.classList.add('hidden');
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

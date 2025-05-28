@@ -2,102 +2,77 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+  <div className="relative w-full h-screen overflow-hidden">
+    {/* <!-- Background with blur effect --> */}
+    <Image
+        src="/background.jpg" 
+        alt="Background"
+        fill
+        className="object-cover fixed inset-0 bg-cover bg-center blur-md"
+        priority
+      />
+     {/* <!-- Logo --> */}
+      <header className="relative h-16">
+      <div className="absolute top-4 left-4 z-10">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src="/logo-icon-name.png"
+          alt="logo"
+          width={100}
+          height={20}
+          className="object-contain"
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+      </div>
+      </header>
+    
+    {/* <!-- Content container --> */}
+    <div className="overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] overflow-hidden h-full relative z-10 max-w-full mx-auto px-4 py-16 text-center flex flex-col min-h-screen">
+      
+      {/* <!-- Main content --> */}
+      <div className="min-h-screen ax-w-full mx-auto flex-grow flex flex-col items-center justify-center">
+        <div className="relative w-full h-220"> 
+          <Image
+            src="/jejak-rasa-g.png" 
+            alt="Coming Soon" 
+            fill
+            className="object-contain"
+          />
+        </div>
+        
+        <div className="bg-[#234e40] bg-opacity-40 rounded-full py-2 px-6 inline-block backdrop-blur-sm">
+          <p className="text-sm sm:text-base text-white">
+            Launching on <span className="font-bold">15 Juni, 2025</span>
+          </p>
+        </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+        <div className="py-2 mt-8 max-w-lg mx-auto">
+          <p className="text-gray-300 mb-2 drop-shadow textshadow-md">Jejak Rasa Sebagai ungkapan manusiawi tentang bagaimana subjektivitas memaknai setiap fragment perjalanan, Dari proses mendasar bagaimana melihat sekitar dengan pancaindra, Lalu di hadirkan dalam bentuk realitas baru yang di kelola oleh imajinasi berbagai macam wujud. Tidak luput peran fenomenologi, Dimana sensibilitas perorangan mengalami kepekaan terhadap apa yang ingin mereka maknai baik dari segi latar belakang biografi, Tempat, Waktu, Bahkan situasi/kondisi hari ini. Rekaman ulang memori yang sukses kita ingat akan menimbulkan percikan estetis yang dapat di aplikasikan ke dalam visualisasi karya seni. Serta peran sumbangsi ilmu pengetahuan dari perjalanan empirik setiap individu dapat di berikan kepada khalayak umum agar tercetus dialektika dua arah yang positif.</p>
+        </div>
+      </div>
+
+      {/* <!-- Social media buttons --> */}
+      <div className="mt-auto pb-8">
+        <div className="flex justify-center space-x-4">
+          <a href="https://www.instagram.com/mikrobait" className="w-12 h-12 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 flex items-center justify-center text-white transition duration-300">
+            <link
+              rel="instagram-icon"
+              href="/instagram-icon?32"
+              type="image/32"
+              sizes="32"
             />
-            Deploy now
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+          <a href="https://www.tiktok.com/@mikrobait0" className="w-12 h-12 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 flex items-center justify-center text-white transition duration-300">
+            <link
+              rel="tiktok-icon"
+              href="/tiktok-icon?32"
+              type="image/32"
+              sizes="32"
+            />
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <p className="text-gray-400 mt-6 text-sm">Follow us for updates</p>
+      </div>
+
     </div>
+  </div>
   );
 }

@@ -12,13 +12,13 @@ export default function Home() {
         priority
       />
      {/* <!-- Logo --> */}
-      <header className="relative h-16">
+      <header className="relative h-20">
       <div className="absolute top-4 left-4 z-10">
         <Image
           src="/logo-icon-name.png"
           alt="logo"
           width={100}
-          height={20}
+          height={16}
           className="object-contain"
         />
       </div>
@@ -45,7 +45,7 @@ export default function Home() {
         </div>
 
         <div className="py-2 mt-8 max-w-lg mx-auto">
-          <p className="text-gray-300 mb-2 drop-shadow textshadow-md">Jejak Rasa Sebagai ungkapan manusiawi tentang bagaimana subjektivitas memaknai setiap fragment perjalanan, Dari proses mendasar bagaimana melihat sekitar dengan pancaindra, Lalu di hadirkan dalam bentuk realitas baru yang di kelola oleh imajinasi berbagai macam wujud. Tidak luput peran fenomenologi, Dimana sensibilitas perorangan mengalami kepekaan terhadap apa yang ingin mereka maknai baik dari segi latar belakang biografi, Tempat, Waktu, Bahkan situasi/kondisi hari ini. Rekaman ulang memori yang sukses kita ingat akan menimbulkan percikan estetis yang dapat di aplikasikan ke dalam visualisasi karya seni. Serta peran sumbangsi ilmu pengetahuan dari perjalanan empirik setiap individu dapat di berikan kepada khalayak umum agar tercetus dialektika dua arah yang positif.</p>
+          <p className="text-gray-300 mb-2 drop-shadow textshadow-md">Jejak Rasa sebagai ungkapan manusiawi tentang bagaimana subjektivitas memaknai setiap fragment perjalanan, dari proses mendasar bagaimana melihat sekitar dengan pancaindra, lalu di hadirkan dalam bentuk realitas baru yang di kelola oleh imajinasi berbagai macam wujud. Tidak luput peran fenomenologi, dimana sensibilitas perorangan mengalami kepekaan terhadap apa yang ingin mereka maknai baik dari segi latar belakang biografi, tempat, waktu, bahkan situasi/kondisi hari ini. Rekaman ulang memori yang sukses kita ingat akan menimbulkan percikan estetis yang dapat di aplikasikan ke dalam visualisasi karya seni. Serta peran sumbangsi ilmu pengetahuan dari perjalanan empirik setiap individu dapat di berikan kepada khalayak umum agar tercetus dialektika dua arah yang positif.</p>
         </div>
       </div>
 
@@ -53,19 +53,19 @@ export default function Home() {
       <div className="mt-auto pb-8">
         <div className="flex justify-center space-x-4">
           <a href="https://www.instagram.com/mikrobait" className="w-12 h-12 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 flex items-center justify-center text-white transition duration-300">
-            <link
-              rel="instagram-icon"
-              href="/instagram-icon?32"
-              type="image/32"
-              sizes="32"
+            <Image 
+            src="/instagram-svgrepo-com.svg"
+            alt="instagram"
+            height={20}
+            width={20}
             />
           </a>
           <a href="https://www.tiktok.com/@mikrobait0" className="w-12 h-12 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 flex items-center justify-center text-white transition duration-300">
-            <link
-              rel="tiktok-icon"
-              href="/tiktok-icon?32"
-              type="image/32"
-              sizes="32"
+            <Image 
+            src="/tiktok-svgrepo-com.svg"
+            alt="tiktok"
+            height={20}
+            width={20}
             />
           </a>
         </div>
